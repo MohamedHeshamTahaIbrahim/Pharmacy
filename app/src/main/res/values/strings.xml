@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Pharmacy</string>
+    <string name="loginAr">تسجيل الدخول</string>
+    <string name="usernameAr">اسم المستخدم</string>
+    <string name="passwordAr">كلمة المرور</string>
+    <string name="forgetPassAr">هل نسيت كلمة المرور</string>
+    <string name="createAccountAr">ليس لديك حساب ؟انشيء حساب</string>
+    <string name="emailAr">البريد الإلكتروني</string>
+    <string name="signupAr">التسجيل</string>
+    <string name="confirmpasswordAr">تأكيد كلمة المرور</string>
+    <string name="mobileAr">الموبايل</string>
+    <string name="addressAr">العنوان</string>
+    <string name="notValidEmailAr">من فضلك قم بإدخال بريد إلكتروني صحيح</string>
+</resources>

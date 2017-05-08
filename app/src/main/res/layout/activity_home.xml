@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:clickable="true">
+
+    <include
+        android:id="@+id/include1"
+        layout="@layout/view_main_header"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/include1"
+        android:clipChildren="true"
+        android:clipToPadding="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        >
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:clipChildren="true"
+            android:clipToPadding="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            >
+
+            <ImageView
+                android:id="@+id/examplegallerybg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/darkgray"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"/>
+
+            <Gallery
+                android:id="@+id/examplegallery"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="true"
+                android:clipToPadding="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+        </RelativeLayout>
+
+
+
+        <!--android:clipToPadding="true"-->
+        <!--android:clipChildren="true"-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+
+            android:layout_weight="5"
+            android:orientation="vertical"
+            android:weightSum="3"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.5"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <com.pharmacy.pharmacy.SquareImageButton
+                    android:id="@+id/cameraBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1.5"
+                    android:background="@null"
+                    android:contentDescription=""
+                    android:padding="5dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/photo_camera" />
+
+
+                <com.pharmacy.pharmacy.SquareImageButton
+                    android:id="@+id/shopBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1.5"
+                    android:background="@null"
+                    android:contentDescription=""
+                    android:padding="5dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/mic" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1.5"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <com.pharmacy.pharmacy.SquareImageButton
+                    android:id="@+id/gallerybtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.5"
+                    android:background="@null"
+                    android:contentDescription=""
+                    android:padding="5dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/icon"/>
+
+                <com.pharmacy.pharmacy.SquareImageButton
+                    android:id="@+id/writeBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1.5"
+                    android:background="@null"
+                    android:contentDescription=""
+                    android:padding="5dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/notepad"/>
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

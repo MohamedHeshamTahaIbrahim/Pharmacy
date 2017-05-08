@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:padding="10dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pharmacy_launch"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal|top"
+        >
+
+
+
+
+        <TextView
+            android:id="@+id/loginTab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/signupAr"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
+
+
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_below="@+id/loginTab"
+    >
+
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_underline"
+        android:drawablePadding="7dp"
+        android:drawableRight="@drawable/user"
+        android:gravity="center_vertical|right"
+        android:hint="@string/usernameAr"
+        android:maxLines="1"
+        android:padding="5dp"
+        android:singleLine="true"
+         />
+
+    <EditText
+            android:id="@+id/email"
+            android:layout_below="@+id/userName"
+            android:drawablePadding="7dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+            android:drawableRight="@drawable/email"
+            android:maxLines="1"
+            android:hint="@string/emailAr"
+            android:singleLine="true"
+            android:gravity="center_vertical|right"
+            android:padding="5dp"
+            android:inputType="textEmailAddress"
+
+            android:background="@drawable/login_underline"/>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_below="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:drawableRight="@drawable/password"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:hint="@string/passwordAr"
+            android:drawablePadding="7dp"
+            android:inputType="textPassword"
+            android:gravity="center_vertical|right"
+            android:padding="5dp"
+
+            android:background="@drawable/login_underline"/>
+
+        <EditText
+            android:id="@+id/confirmPassword"
+            android:layout_below="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:drawableRight="@drawable/password"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:hint="@string/confirmpasswordAr"
+            android:inputType="textPassword"
+
+            android:drawablePadding="7dp"
+            android:gravity="center_vertical|right"
+            android:padding="5dp"
+
+            android:background="@drawable/login_underline"/>
+    <EditText
+        android:id="@+id/address"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/confirmPassword"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_underline"
+        android:drawablePadding="7dp"
+        android:drawableRight="@drawable/location"
+        android:gravity="center_vertical|right"
+        android:hint="@string/addressAr"
+
+        android:maxLines="1"
+        android:padding="5dp"
+        android:singleLine="true" />
+
+
+    <EditText
+        android:id="@+id/mobile"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/address"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_underline"
+        android:drawablePadding="7dp"
+        android:drawableRight="@drawable/mobile"
+        android:gravity="center_vertical|right"
+        android:hint="@string/mobileAr"
+        android:inputType="number"
+        android:maxLines="1"
+        android:padding="5dp"
+        android:singleLine="true" />
+
+
+</LinearLayout>
+
+            <Button
+                android:id="@+id/signUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/signupAr"
+                android:background="@drawable/background_border"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:padding="5dp"
+
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" />
+
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>
