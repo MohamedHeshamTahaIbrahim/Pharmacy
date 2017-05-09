@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.pharmacy.pharmacy.R;
 import com.pharmacy.pharmacy.Rochta.CaptureRochtaScreen;
+import com.pharmacy.pharmacy.Rochta.RecordRochtaScreen;
 import com.pharmacy.pharmacy.Rochta.UploadRochtaScreen;
 import com.pharmacy.pharmacy.Rochta.WriteRochtaScreen;
 import com.pharmacy.pharmacy.SquareImageButton;
@@ -18,7 +19,7 @@ import com.pharmacy.pharmacy.SquareImageButton;
  */
 
 public class HomeScreen extends Activity  implements View.OnClickListener{
-    SquareImageButton cameraBtn,gallerybtn,writeBtn;
+    SquareImageButton cameraBtn,gallerybtn,writeBtn,recordbtn;
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,9 +27,11 @@ public class HomeScreen extends Activity  implements View.OnClickListener{
         cameraBtn=(SquareImageButton) findViewById(R.id.cameraBtn);
         gallerybtn=(SquareImageButton)findViewById(R.id.gallerybtn);
         writeBtn=(SquareImageButton)findViewById(R.id.writeBtn);
+        recordbtn=(SquareImageButton)findViewById(R.id.recordbtn);
         cameraBtn.setOnClickListener(this);
         gallerybtn.setOnClickListener(this);
         writeBtn.setOnClickListener(this);
+        recordbtn.setOnClickListener(this);
     }
 
     @Override
@@ -46,6 +49,9 @@ public class HomeScreen extends Activity  implements View.OnClickListener{
                 Intent intent2=new Intent(HomeScreen.this, WriteRochtaScreen.class);
                 startActivity(intent2);
                 break;
+            case R.id.recordbtn:
+           Intent intent3=new Intent(HomeScreen.this, RecordRochtaScreen.class);
+                startActivity(intent3);
         }
     }
 }

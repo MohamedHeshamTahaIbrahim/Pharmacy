@@ -92,7 +92,7 @@
 
 
                 <com.pharmacy.pharmacy.SquareImageButton
-                    android:id="@+id/shopBtn"
+                    android:id="@+id/recordbtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
