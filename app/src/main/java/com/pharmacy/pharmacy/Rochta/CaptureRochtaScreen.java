@@ -17,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.pharmacy.pharmacy.R;
 
@@ -34,7 +35,7 @@ public class CaptureRochtaScreen extends Activity implements View.OnClickListene
 
     String base64 = "";
     Bitmap photo,useBitmap;
-    ImageView cameraimage,addPhotoIcon;
+    ImageView cameraimage/*,addPhotoIcon*/;
     Button confirm;
     private File dir, destImage,f;
     private String cameraFile = null;
@@ -44,9 +45,12 @@ public class CaptureRochtaScreen extends Activity implements View.OnClickListene
         setContentView(R.layout.activity_capture_rochta);
 
         cameraimage=(ImageView)findViewById(R.id.cameraimage);
-        addPhotoIcon=(ImageView)findViewById(R.id.addPhotoIcon);
+        //addPhotoIcon=(ImageView)findViewById(R.id.addPhotoIcon);
         confirm=(Button)findViewById(R.id.confirm);
-        addPhotoIcon.setOnClickListener(this);
+        Intent cameraIntent = new Intent(
+                android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent, PICK_FROM_CAMERA);
+        //addPhotoIcon.setOnClickListener(this);
         confirm.setOnClickListener(this);
 
 
@@ -109,10 +113,8 @@ public class CaptureRochtaScreen extends Activity implements View.OnClickListene
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.addPhotoIcon:
-               Intent cameraIntent = new Intent(
-                        android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, PICK_FROM_CAMERA);
+           /* case R.id.addPhotoIcon:
+
                 /*dir = new File(Environment.getExternalStorageDirectory()
                         .getAbsolutePath(), "MyApp");
                 if (!dir.isDirectory())
@@ -132,13 +134,15 @@ public class CaptureRochtaScreen extends Activity implements View.OnClickListene
                 Intent i = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
                 i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(destImage));
                 startActivityForResult(i,PICK_FROM_CAMERA);*/
-                break;
+            /*    break;
+            */
             case  R.id.confirm:
-                Intent intent=new Intent(CaptureRochtaScreen.this,CaptureRochtaConfirmScreen.class);
+                /*Intent intent=new Intent(CaptureRochtaScreen.this,CaptureRochtaConfirmScreen.class);
                 //  intent.putExtra("BitmapImage",useBitmap);
                 intent.putExtra("kk",photo);
-                startActivity(intent);
-
+                startActivity(intent);*/
+                Toast.makeText(CaptureRochtaScreen.this, "جاري توصيل الروشتة للصيديليات",
+                        Toast.LENGTH_LONG).show();
                 break;
 
         }

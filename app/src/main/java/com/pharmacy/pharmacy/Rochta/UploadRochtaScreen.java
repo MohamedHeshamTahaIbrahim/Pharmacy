@@ -14,6 +14,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.pharmacy.pharmacy.R;
 
@@ -24,7 +25,7 @@ import java.io.ByteArrayOutputStream;
  */
 
 public class UploadRochtaScreen extends Activity implements View.OnClickListener {
- ImageView galleryimage,addPhotoIcon;
+ ImageView galleryimage/*,addPhotoIcon*/;
     Button confirm;
     String base64 = "";
     Bitmap photo,useBitmap;
@@ -34,16 +35,31 @@ public class UploadRochtaScreen extends Activity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_rochta);
        galleryimage=(ImageView)findViewById(R.id.galleryimage);
-        addPhotoIcon=(ImageView)findViewById(R.id.addPhotoIcon);
+       // addPhotoIcon=(ImageView)findViewById(R.id.addPhotoIcon);
         confirm=(Button)findViewById(R.id.confirm);
-        addPhotoIcon.setOnClickListener(this);
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.putExtra("crop", "true");
+        intent.putExtra("aspectX", 0);
+        intent.putExtra("aspectY", 0);
+        intent.putExtra("outputX", 200);
+        intent.putExtra("outputY", 150);
+        try {
+            intent.putExtra("return-data", true);
+            startActivityForResult(Intent.createChooser(intent,
+                    "Complete action using"), PICK_FROM_GALLERY);
+        } catch (ActivityNotFoundException e) {
+            // Do nothing for now
+        }
+       // addPhotoIcon.setOnClickListener(this);
         confirm.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.addPhotoIcon:
+           /* case R.id.addPhotoIcon:
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -59,12 +75,14 @@ public class UploadRochtaScreen extends Activity implements View.OnClickListener
                 } catch (ActivityNotFoundException e) {
                     // Do nothing for now
                 }
-                break;
+                break;*/
             case R.id.confirm:
-                Intent intent1=new Intent(UploadRochtaScreen.this,UploadRochtaConfirmScreen.class);
+                Toast.makeText(UploadRochtaScreen.this, "جاري توصيل الروشتة للصيديليات",
+                        Toast.LENGTH_LONG).show();
+                /* Intent intent1=new Intent(UploadRochtaScreen.this,UploadRochtaConfirmScreen.class);
                 //  intent.putExtra("BitmapImage",useBitmap);
                 intent1.putExtra("tt",photo);
-                startActivity(intent1);
+                startActivity(intent1);*/
                 break;
         }
     }

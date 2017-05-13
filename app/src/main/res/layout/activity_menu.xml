@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/welcomeTxt"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="مرحبا بكم في        Pharmacy Lynk"
+        android:textColor="@color/white"
+        android:background="@color/background"
+        android:layout_alignParentTop="true"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:gravity="right"
+        android:padding="5dp"/>
+    <ListView
+        android:id="@+id/menuList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:cacheColorHint="#00000000"
+        android:divider="@color/darkgray"
+        android:dividerHeight="1dp"
+        android:listSelector="#10ffffff"
+        android:background="@color/white"
+        android:layout_below="@+id/welcomeTxt"
+        android:layout_above="@+id/logoutayout"/>
+
+
+    <LinearLayout
+        android:id="@+id/logoutayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:background="@color/background"
+        android:gravity="right"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/logoutTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تسجيل الخروج"
+            android:textColor="@color/white"
+            android:gravity="center_vertical"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:textSize="20dp"
+            android:singleLine="true"
+            android:padding="5dp"/>
+
+        <ImageView
+            android:id="@+id/menuImage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/menu_logout"
+            android:padding="5dp"
+
+            android:layout_gravity="center_vertical" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

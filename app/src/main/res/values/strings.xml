@@ -11,4 +11,13 @@
     <string name="mobileAr">الموبايل</string>
     <string name="addressAr">العنوان</string>
     <string name="notValidEmailAr">من فضلك قم بإدخال بريد إلكتروني صحيح</string>
+    <string name="createaccountAr">إنشاء حساب جديد</string>
+    <string name="forgetpasswordAr">هل نسيت كلمة المرور؟</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="LogoutArMessage">هل تريد تسجيل الخروج؟</string>
+    <string name="LogoutEnMessage">Are you sure you want to logout?</string>
+    <string name="CheckConnectionEn">Please check your internet connection</string>
+    <string name="CheckConnectionAr">من فضلك تأكد من الإتصال بالانترنت</string>
 </resources>

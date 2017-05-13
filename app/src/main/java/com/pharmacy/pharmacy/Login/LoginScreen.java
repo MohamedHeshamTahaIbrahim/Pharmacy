@@ -26,16 +26,8 @@ import com.pharmacy.pharmacy.Validation.FormValidation;
  */
 
 public class LoginScreen extends Activity  {
-
-
-
-
-
-
     EditText userName,password;
-
      Button login,createAccount;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +39,7 @@ public class LoginScreen extends Activity  {
             @Override
             public void onClick(View v) {
                 if(userName.getText().toString().equals("m.hesham@rytalo.com")&&password.getText().toString().equals("123456")){
-             Intent intent=new Intent(LoginScreen.this,SignUpScreen.class);
+             Intent intent=new Intent(LoginScreen.this,MainActivity.class);
                 startActivity(intent);}
             }
         });

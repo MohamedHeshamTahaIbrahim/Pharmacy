@@ -36,17 +36,17 @@
 
         </activity>
         <activity android:name=".Login.LoginScreen">
-
-        </activity>
-        <activity android:name=".Signup.SignUpScreen">
-
-        </activity>
-        <activity android:name=".Home.HomeScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Signup.SignUpScreen">
+
+        </activity>
+        <activity android:name=".Home.HomeScreen">
+
         </activity>
         <activity android:name=".Rochta.CaptureRochtaScreen"
             android:screenOrientation="portrait"

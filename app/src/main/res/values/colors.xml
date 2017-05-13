@@ -8,4 +8,6 @@
     <color name="underLineColor">#162B39</color>
     <color name="Red">#FF0000</color>
     <color name="darkgray">#9A9A9A</color>
+    <color name="background">#58d39f</color>
+    <color name="menu_select">#F8F4EC</color>
 </resources>

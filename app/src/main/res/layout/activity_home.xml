@@ -4,7 +4,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/back2"
     android:clickable="true">
 
     <include
@@ -14,12 +14,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/include1"
         android:clipChildren="true"
         android:clipToPadding="true"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        >
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/include1">
 
 
         <RelativeLayout
@@ -29,7 +31,7 @@
             android:clipChildren="true"
             android:clipToPadding="true"
             android:layout_gravity="center"
-            android:layout_marginBottom="5dp"
+
             >
 
             <ImageView
@@ -37,8 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/darkgray"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"/>
+                />
 
             <Gallery
                 android:id="@+id/examplegallery"
@@ -59,8 +60,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+
 
             android:layout_weight="5"
             android:orientation="vertical"
@@ -72,57 +72,82 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1.5"
-                android:clipChildren="false"
-                android:clipToPadding="false"
+
                 android:gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:weightSum="3">
 
+                android:weightSum="2">
                 <com.pharmacy.pharmacy.SquareImageButton
                     android:id="@+id/cameraBtn"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_weight="1.5"
-                    android:background="@null"
+                    android:layout_height="166dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="@color/white"
                     android:contentDescription=""
-                    android:padding="5dp"
+                    android:layout_marginRight="2dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/photo_camera" />
-
+                    android:src="@drawable/photo_camera"/>
 
                 <com.pharmacy.pharmacy.SquareImageButton
                     android:id="@+id/recordbtn"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_weight="1.5"
-                    android:background="@null"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+
+                    android:background="@color/white"
                     android:contentDescription=""
-                    android:padding="5dp"
+                    android:layout_marginLeft="2dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/mic" />
+                    android:src="@drawable/mic"/>
+
+               <!-- <com.pharmacy.pharmacy.SquareImageButton
+                    android:id="@+id/cameraBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginRight="2dp"
+                    android:layout_weight="1.5"
+                    android:background="@color/white"
+                    android:contentDescription=""
+
+                    android:scaleType="centerInside"
+                    android:src="@drawable/photo_camera" />
+
+                <com.pharmacy.pharmacy.SquareImageButton
+                    android:id="@+id/recordbtn"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="1.5"
+                    android:background="@color/white"
+                    android:contentDescription=""
+
+                    android:scaleType="centerInside"
+                    android:src="@drawable/mic" />-->
 
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1.5"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="2">
 
                 <com.pharmacy.pharmacy.SquareImageButton
                     android:id="@+id/gallerybtn"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="166dp"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1.5"
-                    android:background="@null"
+                    android:layout_weight="1"
+                    android:background="@color/white"
                     android:contentDescription=""
-                    android:padding="5dp"
+                    android:layout_marginRight="2dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/icon"/>
 
@@ -131,10 +156,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1.5"
-                    android:background="@null"
+                    android:layout_weight="1"
+
+                    android:background="@color/white"
                     android:contentDescription=""
-                    android:padding="5dp"
+                    android:layout_marginLeft="2dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/notepad"/>
 

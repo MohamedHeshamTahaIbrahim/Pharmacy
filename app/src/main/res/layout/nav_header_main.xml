@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:paddingLeft="64dp"
+        android:paddingRight="64dp"
+        android:paddingTop="10dp"
+        >
+        <ImageView
+            android:id="@+id/closeMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:src="@drawable/exit_menu"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"/>
+
+        <TextView
+            android:layout_below="@+id/closeMenu"
+            android:layout_toRightOf="@+id/closeMenu"
+            android:id="@+id/nameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:textSize="35dp"
+            android:text="Ahmed Nagi"
+            android:textColor="@color/black"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+        <TextView
+            android:id="@+id/emailText"
+            android:layout_below="@+id/nameText"
+            android:layout_toRightOf="@+id/closeMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ahmed@abc.com"
+            android:textStyle="normal"
+            android:textColor="@color/black"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        android:layout_below="@+id/relativeLayout"/>
+</RelativeLayout>
