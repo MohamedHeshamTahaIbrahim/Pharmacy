@@ -3,28 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group android:checkableBehavior="single" >
+        <item android:id="@+id/nav_home"
+            android:title="الصفحة الرئيسية"
+            android:icon="@drawable/pharmacy_launch"
+            />
         <item
             android:id="@+id/nav_profile"
-            android:title="My Profile"
+            android:title="بياناتي الشخصية"
+            android:icon="@drawable/profile"
+
             />
         <item
             android:id="@+id/nav_request"
 
-
-            android:title="My Old Request" />
+            android:icon="@drawable/order"
+            android:title="طلباتي" />
 
         <item
             android:id="@+id/nav_contactus"
-            android:title="Contact Us" />
+            android:icon="@drawable/phone"
+            android:title="اتصل بنا" />
         <item
             android:id="@+id/nav_language"
-
-            android:title="Language" />
+            android:icon="@drawable/language"
+            android:title="English" />
         <item
 
             android:id="@+id/nav_logout"
-
-            android:title="Logout" />
+            android:icon="@drawable/power"
+            android:title="تسجيل الخروج" />
 
     </group>
 

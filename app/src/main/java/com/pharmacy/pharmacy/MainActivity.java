@@ -26,12 +26,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.pharmacy.pharmacy.ContactUs.ContactUSScreen;
 import com.pharmacy.pharmacy.Home.HomeScreen;
 import com.pharmacy.pharmacy.Splash.SplashScreen;
 
 public class MainActivity  extends FragmentActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    Fragment fragment;
+
     DrawerLayout drawer;
     private SharedPreferences languagPreferences;
     private SharedPreferences.Editor languagePrefsEditor;
@@ -42,6 +43,7 @@ public class MainActivity  extends FragmentActivity
     public static NavigationView navigationView;
     String name="";
     SpannableString mNewTitle;
+    Fragment fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,8 +71,11 @@ public class MainActivity  extends FragmentActivity
             }
         });
         navigationView.setNavigationItemSelectedListener(this);
-        Intent intent=new Intent(MainActivity.this, HomeScreen.class);
-        startActivity(intent);
+        fragment = new HomeScreen();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, fragment, "home").addToBackStack("home").commit();
+
         navigationView.getMenu().getItem(0).setChecked(true);
     }
 
@@ -78,7 +83,7 @@ public class MainActivity  extends FragmentActivity
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.END)) {
-            drawer.closeDrawer(GravityCompat.END);
+            drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
@@ -88,7 +93,13 @@ public class MainActivity  extends FragmentActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         // AppController.getInstance().changedLanguage=false;
-        if (id == R.id.nav_profile) {
+        if(id==R.id.nav_home){
+            fragment = new HomeScreen();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, fragment, "home").addToBackStack("home").commit();
+        }
+        else if (id == R.id.nav_profile) {
             Intent profile=new Intent(MainActivity.this,HomeScreen.class);
             startActivity(profile);
             // ((TextView)item.getActionView().findViewById(R.id.countView)).setText("567");
@@ -98,7 +109,10 @@ public class MainActivity  extends FragmentActivity
 
         }
         else if (id == R.id.nav_contactus) {
-
+            fragment = new ContactUSScreen();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, fragment, "contactus").addToBackStack("contactus").commit();
         }
         else if (id == R.id.nav_language) {
 

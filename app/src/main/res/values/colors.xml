@@ -10,4 +10,6 @@
     <color name="darkgray">#9A9A9A</color>
     <color name="background">#58d39f</color>
     <color name="menu_select">#F8F4EC</color>
+    <color name="Yellow"> #eadb22 </color>
+    <color name="langauge_splash">#CAA653</color>
 </resources>

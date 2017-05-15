@@ -42,7 +42,7 @@ public class AppController extends Application {
     public static final String TAG = AppController.class.getSimpleName();
     public static ConnectivityManager cm;
     public static Context context;
-
+    public static String CurrentTag="home";
     String token;
 
 

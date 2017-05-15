@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.pharmacy.pharmacy.AppController;
 import com.pharmacy.pharmacy.MainActivity;
@@ -27,7 +29,9 @@ import com.pharmacy.pharmacy.Validation.FormValidation;
 
 public class LoginScreen extends Activity  {
     EditText userName,password;
-     Button login,createAccount;
+     Button login;
+    TextView createAccount;
+    Fragment fragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +39,7 @@ public class LoginScreen extends Activity  {
         userName=(EditText)findViewById(R.id.userName);
         password=(EditText)findViewById(R.id.password);
       login=(Button)findViewById(R.id.login);
+      createAccount=(TextView)findViewById(R.id.createAccount);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +49,13 @@ public class LoginScreen extends Activity  {
             }
         });
 
-
+       createAccount.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent=new Intent(LoginScreen.this,SignUpScreen.class);
+               startActivity(intent);
+           }
+       });
     }
 
 

@@ -6,203 +6,196 @@
     android:background="@drawable/back2"
     android:padding="10dp">
 
-
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-
-        >
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/pharmacy_launch" />
-    </RelativeLayout>
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal|top"
-        >
-
-
-
-
-        <TextView
-            android:id="@+id/loginTab"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/signupAr"
-            android:textAllCaps="true"
-            android:gravity="center"
-            android:padding="10dp"
-            android:textSize="15dp"
-            android:textColor="@color/white"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
 
 
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/pharmacy_launch" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/loginTab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/signupAr"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/loginTab"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/userName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/login_underline"
+                    android:drawablePadding="7dp"
+                    android:drawableRight="@drawable/user"
+                    android:gravity="center_vertical|right"
+                    android:hint="@string/usernameAr"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:singleLine="true"
+
+                    android:textColorHint="@color/white"
+                    android:textSize="20dp" />
 
 
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/userName"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/login_underline"
+                    android:drawablePadding="7dp"
+                    android:drawableRight="@drawable/email"
+                    android:gravity="center_vertical|right"
+                    android:hint="@string/emailAr"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:singleLine="true"
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_below="@+id/loginTab"
-    >
-    <EditText
-        android:id="@+id/userName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_margin="10dp"
-        android:background="@drawable/login_underline"
-        android:drawablePadding="7dp"
-        android:drawableRight="@drawable/user"
-        android:gravity="center_vertical|right"
-        android:hint="@string/usernameAr"
-        android:textColorHint="@color/white"
-        android:inputType="textEmailAddress"
-        android:maxLines="1"
-        android:textSize="20dp"
+                    android:textColorHint="@color/white" />
 
-        android:padding="5dp"
-        android:singleLine="true" />
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/email"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/login_underline"
+                    android:drawablePadding="7dp"
+                    android:drawableRight="@drawable/password"
+                    android:gravity="center_vertical|right"
+                    android:hint="@string/passwordAr"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/white" />
 
+                <EditText
+                    android:id="@+id/confirmPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/password"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/login_underline"
+                    android:drawablePadding="7dp"
+                    android:drawableRight="@drawable/password"
+                    android:gravity="center_vertical|right"
+                    android:hint="@string/confirmpasswordAr"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:singleLine="true"
 
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/userName"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/login_underline"
-        android:drawablePadding="7dp"
-        android:drawableRight="@drawable/email"
-        android:gravity="center_vertical|right"
-        android:hint="@string/emailAr"
-        android:inputType="textEmailAddress"
-        android:textColorHint="@color/white"
-        android:maxLines="1"
-        android:padding="5dp"
+                    android:textColorHint="@color/white" />
 
-        android:singleLine="true" />
+                <EditText
+                    android:id="@+id/address"
 
-    <EditText
-            android:id="@+id/password"
-            android:layout_below="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:drawableRight="@drawable/password"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:hint="@string/passwordAr"
-            android:drawablePadding="7dp"
-            android:inputType="textPassword"
-            android:gravity="center_vertical|right"
-            android:padding="5dp"
-        android:textColorHint="@color/white"
-            android:background="@drawable/login_underline"/>
-
-        <EditText
-            android:id="@+id/confirmPassword"
-            android:layout_below="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:drawableRight="@drawable/password"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:hint="@string/confirmpasswordAr"
-            android:inputType="textPassword"
-            android:textColorHint="@color/white"
-            android:drawablePadding="7dp"
-            android:gravity="center_vertical|right"
-            android:padding="5dp"
-
-            android:background="@drawable/login_underline"/>
-    <EditText
-        android:id="@+id/address"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/confirmPassword"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/login_underline"
-        android:drawablePadding="7dp"
-        android:drawableRight="@drawable/location"
-        android:gravity="center_vertical|right"
-        android:hint="@string/addressAr"
-        android:textColorHint="@color/white"
-        android:maxLines="1"
-        android:padding="5dp"
-        android:singleLine="true" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/confirmPassword"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/login_underline"
+                    android:drawablePadding="7dp"
+                    android:drawableRight="@drawable/location"
+                    android:gravity="center_vertical|right"
+                    android:hint="@string/addressAr"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/white" />
 
 
-    <EditText
-        android:id="@+id/mobile"
+                <EditText
+                    android:id="@+id/mobile"
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/address"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/login_underline"
-        android:drawablePadding="7dp"
-        android:drawableRight="@drawable/mobile"
-        android:gravity="center_vertical|right"
-        android:hint="@string/mobileAr"
-        android:inputType="number"
-        android:maxLines="1"
-        android:textColorHint="@color/white"
-        android:padding="5dp"
-        android:singleLine="true" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/address"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/login_underline"
+                    android:drawablePadding="7dp"
+                    android:drawableRight="@drawable/mobile"
+                    android:gravity="center_vertical|right"
+                    android:hint="@string/mobileAr"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:padding="5dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/white" />
 
 
-</LinearLayout>
+            </LinearLayout>
 
             <Button
                 android:id="@+id/signUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/signupAr"
-                android:background="@drawable/background_border"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:padding="5dp"
-                android:textStyle="bold"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true" />
+                android:background="@drawable/background_border"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/signupAr"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
 
 
+        </LinearLayout>
+    </ScrollView>
 
-
-    </RelativeLayout>
-</ScrollView>
 </LinearLayout>
