@@ -9,14 +9,14 @@
         <item android:id="@+id/nav_home"
             android:title="الصفحة الرئيسية"
 
-            android:icon="@drawable/pharmacy_launch"
+            android:icon="@drawable/home"
 
             />
         </group>
     <group android:id="@+id/xx" android:checkableBehavior="single">
         <item
             android:id="@+id/nav_setting"
-            android:icon="@drawable/language"
+            android:icon="@drawable/settings"
             android:title="الاعدادات" />
     </group>
         <group android:id="@+id/dd" android:checkableBehavior="single">
@@ -36,7 +36,7 @@
     <group android:checkableBehavior="single" android:id="@+id/mm">
         <item
             android:id="@+id/nav_help"
-            android:icon="@drawable/power"
+            android:icon="@drawable/info"
             android:title="مساعدة" />
 
     </group>

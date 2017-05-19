@@ -22,4 +22,6 @@
     <color name="text">#FFFFFF</color>
     <color name="jj">#BAB399</color>
     <color name="tab_strip">#B42929</color>
+    <color name="blue">#749acc</color>
+    <color name="darkblue">#0a63da</color>
 </resources>

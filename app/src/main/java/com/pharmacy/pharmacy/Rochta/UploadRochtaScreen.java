@@ -10,8 +10,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Base64;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -26,19 +29,19 @@ import java.io.ByteArrayOutputStream;
  * Created by Mohamed Hesham on 2017-05-09.
  */
 
-public class UploadRochtaScreen extends Activity implements View.OnClickListener {
+public class UploadRochtaScreen extends Fragment implements View.OnClickListener {
  ImageView galleryimage/*,addPhotoIcon*/;
     Button confirm;
     String base64 = "";
     Bitmap photo,useBitmap;
     private static final int PICK_FROM_GALLERY = 2;
+    View view;
     @Override
-    protected void onCreate( Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload_rochta);
-       galleryimage=(ImageView)findViewById(R.id.galleryimage);
-       // addPhotoIcon=(ImageView)findViewById(R.id.addPhotoIcon);
-        confirm=(Button)findViewById(R.id.confirm);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
+         view= inflater.inflate(R.layout.activity_upload_rochta, container, false);
+        galleryimage=(ImageView)view.findViewById(R.id.galleryimage);
+        // addPhotoIcon=(ImageView)findViewById(R.id.addPhotoIcon);
+        confirm=(Button)view.findViewById(R.id.confirm);
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -54,9 +57,12 @@ public class UploadRochtaScreen extends Activity implements View.OnClickListener
         } catch (ActivityNotFoundException e) {
             // Do nothing for now
         }
-       // addPhotoIcon.setOnClickListener(this);
+        // addPhotoIcon.setOnClickListener(this);
         confirm.setOnClickListener(this);
+        return view;
     }
+
+
 
     @Override
     public void onClick(View v) {
@@ -79,7 +85,7 @@ public class UploadRochtaScreen extends Activity implements View.OnClickListener
                 }
                 break;*/
             case R.id.confirm:
-                Toast.makeText(UploadRochtaScreen.this, "جاري توصيل الروشتة للصيديليات",
+                Toast.makeText(getActivity(), "جاري توصيل الروشتة للصيديليات",
                         Toast.LENGTH_LONG).show();
                 /* Intent intent1=new Intent(UploadRochtaScreen.this,UploadRochtaConfirmScreen.class);
                 //  intent.putExtra("BitmapImage",useBitmap);
@@ -90,7 +96,7 @@ public class UploadRochtaScreen extends Activity implements View.OnClickListener
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+   public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == PICK_FROM_GALLERY) {
             try {
                 Bundle extras2 = data.getExtras();
@@ -112,7 +118,7 @@ public class UploadRochtaScreen extends Activity implements View.OnClickListener
                 else{
                     Uri selectedImage = data.getData();
                     String[] filePathColumn = { MediaStore.Images.Media.DATA };
-                    Cursor cursor = UploadRochtaScreen.this.getContentResolver().query(selectedImage,filePathColumn, null, null, null);
+                    Cursor cursor = getActivity().getContentResolver().query(selectedImage,filePathColumn, null, null, null);
                     cursor.moveToFirst();
                     int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                     String picturePath = cursor.getString(columnIndex);

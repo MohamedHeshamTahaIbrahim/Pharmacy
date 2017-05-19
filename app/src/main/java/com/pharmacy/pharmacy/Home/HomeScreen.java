@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Gallery;
+import android.widget.ImageView;
 
 import com.pharmacy.pharmacy.Adapter.GalleryImageAdapter;
 import com.pharmacy.pharmacy.Adapter.HomeGallary_Adapter;
@@ -30,7 +31,7 @@ import com.pharmacy.pharmacy.SquareImageButton;
  */
 
 public class HomeScreen extends Fragment implements View.OnClickListener{
-    SquareImageButton cameraBtn,gallerybtn,writeBtn,recordbtn;
+   ImageView cameraBtn,gallerybtn,writeBtn,recordbtn;
     private View view;
     private Gallery gallery;
     private HomeGallary_Adapter adp;
@@ -39,10 +40,10 @@ public class HomeScreen extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_home, container, false);
-        cameraBtn=(SquareImageButton) view.findViewById(R.id.cameraBtn);
-        gallerybtn=(SquareImageButton)view.findViewById(R.id.gallerybtn);
-        writeBtn=(SquareImageButton)view.findViewById(R.id.writeBtn);
-        recordbtn=(SquareImageButton)view.findViewById(R.id.recordbtn);
+        cameraBtn=(ImageView) view.findViewById(R.id.capturerochta);
+        gallerybtn=(ImageView) view.findViewById(R.id.uploadrochta);
+        writeBtn=(ImageView) view.findViewById(R.id.writerochta);
+        recordbtn=(ImageView) view.findViewById(R.id.recordrochta);
         cameraBtn.setOnClickListener(this);
         gallerybtn.setOnClickListener(this);
         writeBtn.setOnClickListener(this);
@@ -61,23 +62,31 @@ public class HomeScreen extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.cameraBtn:
-                Intent intent=new Intent(getActivity(), CaptureRochtaScreen.class);
-                startActivity(intent);
+            case R.id.capturerochta:
+                fragment = new CaptureRochtaScreen();
+                FragmentManager fragmentManager2 = getActivity().getSupportFragmentManager();
+                fragmentManager2.beginTransaction()
+                        .replace(R.id.content_frame, fragment, "camera").addToBackStack("camera").commit();
                 break;
-            case R.id.gallerybtn:
-                Intent intent1=new Intent(getActivity(), UploadRochtaScreen.class);
-                startActivity(intent1);
-                break;
-            case R.id.writeBtn:
-                Intent intent2=new Intent(getActivity(), WriteRochtaScreen.class);
-                startActivity(intent2);
-                break;
-            case R.id.recordbtn:
-                fragment = new RecordFragment();
+            case R.id.uploadrochta:
+                fragment = new UploadRochtaScreen();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, fragment, "upload").addToBackStack("upload").commit();
+                break;
+            case R.id.writerochta:
+                fragment = new WriteRochtaScreen();
+                FragmentManager fragmentManager3 = getActivity().getSupportFragmentManager();
+                fragmentManager3.beginTransaction()
+                        .replace(R.id.content_frame, fragment, "write").addToBackStack("write").commit();
+                break;
+            case R.id.recordrochta: {
+                fragment = new RecordFragment();
+                FragmentManager fragmentManager1 = getActivity().getSupportFragmentManager();
+                fragmentManager1.beginTransaction()
                         .replace(R.id.content_frame, fragment, "record").addToBackStack("record").commit();
+            break;
+            }
         }
     }
 

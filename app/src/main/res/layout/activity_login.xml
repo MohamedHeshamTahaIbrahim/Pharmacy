@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    android:background="@drawable/back2">
+    android:background="@drawable/back4">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,6 +18,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginBottom="30dp"
 
 
         >
@@ -75,7 +76,7 @@
         android:text="أو"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="30dp"
+        android:textSize="20dp"
        />
 </LinearLayout>
         <LinearLayout
@@ -89,8 +90,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_margin="10dp"
-                android:background="@drawable/login_underline"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/rounded_rectangle_blue"
                 android:drawablePadding="7dp"
                 android:drawableRight="@drawable/user"
                 android:gravity="center_vertical|right"
@@ -98,9 +101,12 @@
                 android:textColorHint="@color/white"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
-                android:textSize="20dp"
-
-                android:padding="5dp"
+                android:textSize="15dp"
+                android:textColor="@color/white"
+                android:paddingRight="15dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
                 android:singleLine="true" />
 
             <EditText
@@ -108,17 +114,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/userName"
-                android:layout_margin="10dp"
-                android:background="@drawable/login_underline"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/rounded_rectangle_blue"
                 android:drawablePadding="7dp"
                 android:textColorHint="@color/white"
                 android:drawableRight="@drawable/password"
                 android:gravity="center_vertical|right"
                 android:hint="@string/passwordAr"
                 android:inputType="textPassword"
+                android:textColor="@color/white"
                 android:maxLines="1"
-                android:padding="5dp"
-                android:textSize="20dp"
+                android:paddingRight="15dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
+                android:textSize="15dp"
                 android:singleLine="true" />
         </LinearLayout>
 
@@ -126,10 +138,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
 
             android:layout_gravity="bottom"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
 
             android:orientation="vertical">
 
@@ -137,22 +149,23 @@
                 android:id="@+id/login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/background_border"
-                android:gravity="center"
-                android:padding="5dp"
-                android:textSize="20dp"
-                android:text="@string/loginAr"
+                android:background="@drawable/rounded_rectangle_red"
+
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:drawableLeft="@drawable/left_arrow"
+                android:gravity="center|center_vertical"
+                android:text="تسجيل الدخول"
+               android:drawablePadding="7dp"
+                android:paddingRight="15dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="5dp"
                 android:textColor="@color/white"
-                android:textStyle="bold"/>
-            <View
-                android:layout_width="250dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center"
-                android:background="@color/white"
-                />
+                android:textColorHint="@color/white"
+                android:textSize="15dp" />
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -161,7 +174,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal"
-                android:gravity="center_horizontal"
+                android:gravity="center_horizontal|bottom"
+
 
                 >
                 <View
@@ -171,14 +185,14 @@
                     android:layout_height="52dp"
 
                    android:layout_toRightOf="@+id/createAccount"
-                    android:background="@color/white" />
+                    android:background="@color/blue" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/createaccountAr"
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkblue"
                     android:textStyle="bold"
-                    android:textSize="15dp"
+                    android:textSize="10dp"
                     android:layout_margin="10dp"
                    android:id="@+id/createAccount"
                     android:layout_centerVertical="true"
@@ -187,9 +201,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textSize="15dp"
+                    android:textSize="10dp"
                     android:text="@string/forgetpasswordAr"
-                    android:textColor="@color/white"
+                    android:textColor="@color/darkblue"
                     android:layout_margin="10dp"
                     android:id="@+id/forgetPasswordBtn"
                     android:layout_toRightOf="@+id/view"

@@ -44,18 +44,7 @@
         <activity android:name=".Signup.SignUpScreen">
 
         </activity>
-
-        <activity android:name=".Rochta.CaptureRochtaScreen"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden">
-
-        </activity>
         <activity android:name=".Rochta.CaptureRochtaConfirmScreen"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden">
-
-        </activity>
-        <activity android:name=".Rochta.UploadRochtaScreen"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
 
@@ -63,9 +52,6 @@
         <activity android:name=".Rochta.UploadRochtaConfirmScreen"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"></activity>
-        <activity android:name=".Rochta.WriteRochtaScreen"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" ></activity>
         <activity android:name=".Rochta.RecordRochtaScreen"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"

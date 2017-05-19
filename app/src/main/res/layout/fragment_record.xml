@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_record"
     android:orientation="vertical"
+    android:background="@drawable/back4"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     <include
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/chronometer"
         android:textSize="30sp"
+        android:textColor="@color/black"
         android:fontFamily="sans-serif-light"
         android:layout_alignBottom="@+id/recordProgressBar"
         android:layout_centerHorizontal="true"

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/back2">
+    android:background="@drawable/back4">
 
     <include
         android:id="@+id/headerLayout" layout="@layout/view_main_header"/>
@@ -27,7 +27,7 @@
             android:textSize="20dp"
             android:gravity="center_horizontal"
             android:layout_gravity="center_horizontal"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:text="@string/contactTitlAr"
             />
         <TextView
@@ -37,7 +37,7 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
             android:textSize="15dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:text="@string/contactdesAr"/>
         </LinearLayout>
         <LinearLayout
@@ -71,7 +71,7 @@
                     android:gravity="center|left"
                     android:drawableLeft="@drawable/contactus_phonered"
                     android:text="8005423789"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:drawablePadding="10dp"
                     android:layout_marginBottom="20dp"/>
 
@@ -83,7 +83,7 @@
                 android:textSize="18dp"
                 android:drawableLeft="@drawable/contactus_mail"
                 android:text="pha@gmail.com"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:layout_marginLeft="10dp"
                 android:drawablePadding="10dp"/>
 
@@ -107,7 +107,7 @@
 
             android:textSize="18dp"
             android:layout_marginBottom="10dp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             />
 
         <LinearLayout

@@ -10,9 +10,12 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.util.Base64;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -32,7 +35,7 @@ import java.util.Date;
  * Created by Mohamed Hesham on 2017-05-08.
  */
 
-public class CaptureRochtaScreen extends Activity implements View.OnClickListener {
+public class CaptureRochtaScreen extends Fragment implements View.OnClickListener {
     private static final int PICK_FROM_CAMERA = 1;
 
     String base64 = "";
@@ -41,25 +44,23 @@ public class CaptureRochtaScreen extends Activity implements View.OnClickListene
     Button confirm;
     private File dir, destImage,f;
     private String cameraFile = null;
+    View view;
+    @Nullable
     @Override
-    protected void onCreate( Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_capture_rochta);
-
-        cameraimage=(ImageView)findViewById(R.id.cameraimage);
+    public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
+        view= inflater.inflate(R.layout.activity_capture_rochta, container, false);
+        cameraimage=(ImageView)view.findViewById(R.id.cameraimage);
         //addPhotoIcon=(ImageView)findViewById(R.id.addPhotoIcon);
-        confirm=(Button)findViewById(R.id.confirm);
+        confirm=(Button)view.findViewById(R.id.confirm);
         Intent cameraIntent = new Intent(
                 android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(cameraIntent, PICK_FROM_CAMERA);
         //addPhotoIcon.setOnClickListener(this);
         confirm.setOnClickListener(this);
-
-
+        return view;
     }
-
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
          try {
 
@@ -143,7 +144,7 @@ public class CaptureRochtaScreen extends Activity implements View.OnClickListene
                 //  intent.putExtra("BitmapImage",useBitmap);
                 intent.putExtra("kk",photo);
                 startActivity(intent);*/
-                Toast.makeText(CaptureRochtaScreen.this, "جاري توصيل الروشتة للصيديليات",
+                Toast.makeText(getActivity(), "جاري توصيل الروشتة للصيديليات",
                         Toast.LENGTH_LONG).show();
                 break;
 
@@ -156,6 +157,7 @@ public class CaptureRochtaScreen extends Activity implements View.OnClickListene
             MainActivity.navigationView.getMenu().getItem(0).setChecked(true);
             MainActivity.navigationView.getMenu().getItem(1).setChecked(false);
             MainActivity.navigationView.getMenu().getItem(2).setChecked(false);
+
         }
         AppController.activityResumed();
     }

@@ -4,7 +4,7 @@
     android:id="@+id/activity_personal_information"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back2"
+    android:background="@drawable/back4"
     android:scrollbars="vertical"
    >
 
