@@ -46,6 +46,7 @@ public class AppController extends Application {
     String token;
 
 
+
     String language = "en";
     Dialog dialogMsg;
 

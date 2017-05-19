@@ -3,7 +3,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/white"
+    android:background="@color/primary"
     android:gravity="bottom"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
@@ -18,35 +18,38 @@
         android:paddingTop="10dp"
         >
         <ImageView
-            android:id="@+id/closeMenu"
+
+            android:id="@+id/image_personal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="16dp"
-            android:src="@drawable/exit_menu"
-            android:textSize="20sp"
-            android:textColor="@android:color/black"/>
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/user"
+            />
 
         <TextView
-            android:layout_below="@+id/closeMenu"
-            android:layout_toRightOf="@+id/closeMenu"
+            android:layout_below="@+id/image_personal"
+
             android:id="@+id/nameText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
-            android:textSize="35dp"
-            android:text="Ahmed Nagi"
-            android:textColor="@color/black"
+            android:gravity="center_horizontal"
+            android:textSize="20dp"
+            android:text="اسم المستخدم"
+            android:textColor="@color/white"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <TextView
             android:id="@+id/emailText"
             android:layout_below="@+id/nameText"
-            android:layout_toRightOf="@+id/closeMenu"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ahmed@abc.com"
+            android:textSize="15dp"
             android:textStyle="normal"
-            android:textColor="@color/black"/>
+            android:textColor="@color/white"/>
     </RelativeLayout>
     <View
         android:layout_width="match_parent"

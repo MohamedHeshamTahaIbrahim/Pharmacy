@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.pharmacy.pharmacy.AppController;
+import com.pharmacy.pharmacy.MainActivity;
 import com.pharmacy.pharmacy.R;
 
 import java.io.ByteArrayOutputStream;
@@ -135,5 +137,20 @@ public class UploadRochtaScreen extends Activity implements View.OnClickListener
             }
 
         }
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(AppController.getInstance().CurrentTag.equalsIgnoreCase("home")) {
+            MainActivity.navigationView.getMenu().getItem(0).setChecked(true);
+            MainActivity.navigationView.getMenu().getItem(1).setChecked(false);
+            MainActivity.navigationView.getMenu().getItem(2).setChecked(false);
+        }
+        AppController.activityResumed();
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        AppController.activityPaused();
     }
 }

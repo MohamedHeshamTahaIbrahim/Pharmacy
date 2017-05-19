@@ -63,13 +63,13 @@ public class MainActivity  extends FragmentActivity
 
         nameText = (TextView) header.findViewById(R.id.nameText);
         emailText = (TextView) header.findViewById(R.id.emailText);
-        closeMenu = (ImageView) header.findViewById(R.id.closeMenu);
-        closeMenu.setOnClickListener(new View.OnClickListener() {
+       // closeMenu = (ImageView) header.findViewById(R.id.closeMenu);
+        /*closeMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 drawer.closeDrawers();
             }
-        });
+        });*/
         navigationView.setNavigationItemSelectedListener(this);
         fragment = new HomeScreen();
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -85,6 +85,9 @@ public class MainActivity  extends FragmentActivity
         if (drawer.isDrawerOpen(GravityCompat.END)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+            if(getSupportFragmentManager().findFragmentByTag("home")!= null)
+                if(getSupportFragmentManager().findFragmentByTag("home").isVisible())
+                    super.onBackPressed();
             super.onBackPressed();
         }
     }
@@ -100,12 +103,17 @@ public class MainActivity  extends FragmentActivity
                     .replace(R.id.content_frame, fragment, "home").addToBackStack("home").commit();
         }
         else if (id == R.id.nav_profile) {
-            Intent profile=new Intent(MainActivity.this,HomeScreen.class);
-            startActivity(profile);
+            fragment = new HomeScreen();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, fragment, "home").addToBackStack("home").commit();
             // ((TextView)item.getActionView().findViewById(R.id.countView)).setText("567");
         } else if (id == R.id.nav_request) {
             // ((TextView)item.getActionView().findViewById(R.id.countView)).setText("567");
-
+            fragment = new HomeScreen();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, fragment, "home").addToBackStack("home").commit();
 
         }
         else if (id == R.id.nav_contactus) {
@@ -114,11 +122,17 @@ public class MainActivity  extends FragmentActivity
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame, fragment, "contactus").addToBackStack("contactus").commit();
         }
-        else if (id == R.id.nav_language) {
+        else if (id == R.id.nav_help) {
+            fragment = new HomeScreen();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, fragment, "home").addToBackStack("home").commit();
 
-
-        }else if (id == R.id.nav_logout) {
-
+        }else if (id == R.id.nav_setting) {
+            fragment = new HomeScreen();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, fragment, "home").addToBackStack("home").commit();
         }
 
 

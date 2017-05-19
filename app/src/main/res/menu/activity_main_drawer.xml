@@ -1,39 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layoutDirection="rtl"
 
-    <group android:checkableBehavior="single" >
+    >
+
+    <group android:checkableBehavior="single" android:id="@+id/ss" >
         <item android:id="@+id/nav_home"
             android:title="الصفحة الرئيسية"
+
             android:icon="@drawable/pharmacy_launch"
-            />
-        <item
-            android:id="@+id/nav_profile"
-            android:title="بياناتي الشخصية"
-            android:icon="@drawable/profile"
 
             />
+        </group>
+    <group android:id="@+id/xx" android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/language"
+            android:title="الاعدادات" />
+    </group>
+        <group android:id="@+id/dd" android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+            android:title="الملف الشخصي"
+            android:icon="@drawable/profile"
+            />
+            </group>
+    <group android:id="@+id/s" android:checkableBehavior="single">
         <item
             android:id="@+id/nav_request"
 
             android:icon="@drawable/order"
-            android:title="طلباتي" />
+            android:title="طلباتي السابقة" />
+</group>
+    <group android:checkableBehavior="single" android:id="@+id/mm">
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/power"
+            android:title="مساعدة" />
 
+    </group>
+    <group android:checkableBehavior="single" android:id="@+id/qa">
         <item
             android:id="@+id/nav_contactus"
             android:icon="@drawable/phone"
             android:title="اتصل بنا" />
-        <item
-            android:id="@+id/nav_language"
-            android:icon="@drawable/language"
-            android:title="English" />
-        <item
+        </group>
 
-            android:id="@+id/nav_logout"
-            android:icon="@drawable/power"
-            android:title="تسجيل الخروج" />
 
-    </group>
 
 
 

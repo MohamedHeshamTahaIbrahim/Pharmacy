@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,12 @@ import android.widget.Gallery;
 
 import com.pharmacy.pharmacy.Adapter.GalleryImageAdapter;
 import com.pharmacy.pharmacy.Adapter.HomeGallary_Adapter;
+import com.pharmacy.pharmacy.AppController;
+import com.pharmacy.pharmacy.MainActivity;
 import com.pharmacy.pharmacy.R;
 import com.pharmacy.pharmacy.Rochta.CaptureRochtaScreen;
+import com.pharmacy.pharmacy.Rochta.Record;
+import com.pharmacy.pharmacy.Rochta.RecordFragment;
 import com.pharmacy.pharmacy.Rochta.RecordRochtaScreen;
 import com.pharmacy.pharmacy.Rochta.UploadRochtaScreen;
 import com.pharmacy.pharmacy.Rochta.WriteRochtaScreen;
@@ -29,6 +34,7 @@ public class HomeScreen extends Fragment implements View.OnClickListener{
     private View view;
     private Gallery gallery;
     private HomeGallary_Adapter adp;
+    Fragment fragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -68,8 +74,29 @@ public class HomeScreen extends Fragment implements View.OnClickListener{
                 startActivity(intent2);
                 break;
             case R.id.recordbtn:
-           Intent intent3=new Intent(getActivity(), RecordRochtaScreen.class);
-                startActivity(intent3);
+                fragment = new RecordFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, fragment, "record").addToBackStack("record").commit();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(AppController.getInstance().CurrentTag.equalsIgnoreCase("home")) {
+            MainActivity.navigationView.getMenu().getItem(0).setChecked(true);
+            MainActivity.navigationView.getMenu().getItem(1).setChecked(false);
+            MainActivity.navigationView.getMenu().getItem(2).setChecked(false);
+            MainActivity.navigationView.getMenu().getItem(3).setChecked(false);
+            MainActivity.navigationView.getMenu().getItem(4).setChecked(false);
+            MainActivity.navigationView.getMenu().getItem(5).setChecked(false);
+        }
+        AppController.activityResumed();
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        AppController.activityPaused();
     }
 }

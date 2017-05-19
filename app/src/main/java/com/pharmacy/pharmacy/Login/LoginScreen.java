@@ -43,9 +43,9 @@ public class LoginScreen extends Activity  {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(userName.getText().toString().equals("m.hesham@rytalo.com")&&password.getText().toString().equals("123456")){
+              /*  if(userName.getText().toString().equals("m.hesham@rytalo.com")&&password.getText().toString().equals("123456")){*/
              Intent intent=new Intent(LoginScreen.this,MainActivity.class);
-                startActivity(intent);}
+                startActivity(intent);/*}*/
             }
         });
 

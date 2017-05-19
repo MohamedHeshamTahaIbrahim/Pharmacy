@@ -19,7 +19,20 @@
        android:visibility="gone"
         android:id="@+id/cameraimage"
         android:layout_below="@+id/include1"/>
+    <EditText
+        android:id="@+id/notes"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
 
+        android:ems="10"
+        android:gravity="center_vertical"
+        android:padding="25dp"
+
+        android:inputType="textMultiLine"
+        android:background="@drawable/card"
+        android:layout_above="@+id/confirm"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

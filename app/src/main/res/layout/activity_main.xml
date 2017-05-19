@@ -21,9 +21,10 @@
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer"
         app:itemTextAppearance="@style/NavigationDrawerStyle"
-        app:itemTextColor="@color/white"
+        app:itemTextColor="@color/black"
         app:itemBackground="@drawable/nav_view_item_background"
-        android:background="@color/background"
+        android:background="@color/white"
+        app:insetForeground="@color/white"
         >
 
 
