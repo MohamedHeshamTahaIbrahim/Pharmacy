@@ -32,7 +32,7 @@ public class SignUpScreen extends Activity  {
  EditText userName,email,password,confirmpassword,address,mobile;
 
 
-   Button signup;
+   Button signUp;
 
 
 
@@ -46,6 +46,16 @@ public class SignUpScreen extends Activity  {
         confirmpassword=(EditText)findViewById(R.id.confirmPassword);
         address=(EditText)findViewById(R.id.address);
         mobile=(EditText)findViewById(R.id.mobile);
+        signUp=(Button)findViewById(R.id.signUp);
+        userName.setTypeface(AppController.getInstance().regular);
+        email.setTypeface(AppController.getInstance().regular);
+        password.setTypeface(AppController.getInstance().regular);
+        confirmpassword.setTypeface(AppController.getInstance().regular);
+        address.setTypeface(AppController.getInstance().regular);
+        mobile.setTypeface(AppController.getInstance().regular);
+        signUp.setTypeface(AppController.getInstance().bold);
+
+
     }
 
 

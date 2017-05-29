@@ -12,7 +12,7 @@
     <color name="menu_select">#F8F4EC</color>
     <color name="Yellow"> #eadb22 </color>
     <color name="langauge_splash">#CAA653</color>
-    <color name="primary">#F44336</color>
+    <color name="primary">#bc1c21</color>
     <color name="primary_dark">#D32F2F</color>
     <color name="primary_light">#FFCDD2</color>
     <color name="primary_text">#212121</color>
@@ -24,4 +24,5 @@
     <color name="tab_strip">#B42929</color>
     <color name="blue">#749acc</color>
     <color name="darkblue">#0a63da</color>
+    <color name="kkk">#333333</color>
 </resources>

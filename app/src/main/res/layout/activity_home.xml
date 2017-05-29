@@ -24,7 +24,7 @@
         android:layout_below="@+id/include1">
 
 
-        <RelativeLayout
+     <!--   <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
@@ -47,7 +47,7 @@
 
 
 
-        </RelativeLayout>
+        </RelativeLayout>-->
 
 
 
@@ -67,7 +67,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_weight="1.5"
                 android:layout_margin="15dp"
 
                 android:gravity="center_horizontal"
@@ -77,7 +77,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.5"
                     android:orientation="vertical"
                     android:padding="10dp"
                     android:layout_alignParentRight="true"
@@ -90,15 +90,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                        android:layout_marginBottom="10dp"
-                        android:src="@drawable/mic" />
+                        android:src="@drawable/record" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:textStyle="normal"
+                        android:id="@+id/recordrochtaTV"
                         android:text="سجل الروشتة"
-                        android:textSize="20dp" />
+                        android:textSize="25dp" />
                 </LinearLayout>
                 <View
                     android:id="@+id/view"
@@ -111,15 +112,14 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.5"
                     android:orientation="vertical"
                     android:padding="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_alignParentLeft="true"
                     android:gravity="center_horizontal|center_vertical"
 
-                    >
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
 
                     <ImageView
                         android:id="@+id/capturerochta"
@@ -134,9 +134,9 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:textStyle="normal"
-
+                        android:id="@+id/capturerochtaTV"
                         android:text="صور الروشتة"
-                        android:textSize="20dp" />
+                        android:textSize="25dp" />
                 </LinearLayout>
 
                <!-- <com.pharmacy.pharmacy.SquareImageButton
@@ -183,7 +183,7 @@
     <View
 
         android:layout_width="130dp"
-        android:layout_weight="1"
+        android:layout_weight="0.5"
         android:orientation="vertical"
         android:padding="10dp"
         android:gravity="center_horizontal|center_vertical"
@@ -206,7 +206,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
+                android:layout_weight="1.5"
                 android:layout_margin="5dp"
 
                 android:gravity="center_horizontal"
@@ -216,23 +216,22 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.5"
                     android:orientation="vertical"
                     android:padding="10dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
 
-                    android:layout_alignParentRight="true"
                     android:gravity="center_horizontal|center_vertical"
 
-                    >
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true">
 
                     <ImageView
                         android:id="@+id/writerochta"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                      android:layout_marginBottom="5dp"
-                        android:src="@drawable/notepad" />
+                        android:src="@drawable/write" />
 
                     <TextView
 
@@ -240,8 +239,9 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:textStyle="normal"
+                        android:id="@+id/writerochtaTV"
                         android:text="اكتب الروشتة"
-                        android:textSize="20dp" />
+                        android:textSize="25dp" />
                 </LinearLayout>
                 <View
 
@@ -254,22 +254,21 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.5"
                     android:orientation="vertical"
                     android:padding="10dp"
-                    android:layout_alignParentLeft="true"
                     android:gravity="center_horizontal|center_vertical"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
 
-                    >
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
 
                     <ImageView
                         android:id="@+id/uploadrochta"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                        android:layout_marginBottom="5dp"
-                        android:src="@drawable/icon" />
+                        android:src="@drawable/picture" />
 
                     <TextView
 
@@ -277,8 +276,9 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:textStyle="normal"
+                        android:id="@+id/uploadrochtaTv"
                         android:text="صورة الروشتة"
-                        android:textSize="20dp" />
+                        android:textSize="25dp" />
                 </LinearLayout>
 
                 <!-- <com.pharmacy.pharmacy.SquareImageButton

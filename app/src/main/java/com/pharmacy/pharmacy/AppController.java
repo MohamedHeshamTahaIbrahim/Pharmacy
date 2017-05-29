@@ -53,10 +53,9 @@ public class AppController extends Application {
     // public ArrayList<Appointment> appointments = new ArrayList<>();
     public User user = null;
     private static AppController mInstance = new AppController();
-    public Typeface light,bold;
     private static boolean activityVisible;
     Handler handler;
-
+    public Typeface bold,regular;
     public static synchronized AppController getInstance() {
         return mInstance;
     }

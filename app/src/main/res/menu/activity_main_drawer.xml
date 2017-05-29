@@ -36,7 +36,7 @@
     <group android:checkableBehavior="single" android:id="@+id/mm">
         <item
             android:id="@+id/nav_help"
-            android:icon="@drawable/info"
+            android:icon="@drawable/help"
             android:title="مساعدة" />
 
     </group>

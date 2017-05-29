@@ -13,8 +13,8 @@
         layout="@layout/view_main_header"/>
     <EditText
         android:id="@+id/notes"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
 
         android:ems="10"
         android:gravity="center_vertical"
@@ -22,14 +22,15 @@
 
         android:inputType="textMultiLine"
         android:background="@drawable/card"
-        android:layout_below="@+id/include1"
-        android:layout_above="@+id/confirm" />
+        android:layout_above="@+id/confirm"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="إرسال"
         android:textAllCaps="true"
-        android:background="@color/background"
+        android:background="@color/primary"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:id="@+id/confirm"

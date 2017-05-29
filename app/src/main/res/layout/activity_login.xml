@@ -88,20 +88,21 @@
             <EditText
                 android:id="@+id/userName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/rounded_rectangle_blue"
                 android:drawablePadding="7dp"
-                android:drawableRight="@drawable/user"
+                android:drawableRight="@drawable/email"
                 android:gravity="center_vertical|right"
                 android:hint="@string/usernameAr"
                 android:textColorHint="@color/white"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
-                android:textSize="15dp"
+                android:padding="15dp"
+                android:textSize="17dp"
                 android:textColor="@color/white"
                 android:paddingRight="15dp"
                 android:paddingTop="5dp"
@@ -112,9 +113,10 @@
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_below="@+id/userName"
                 android:layout_marginLeft="15dp"
+                android:padding="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/rounded_rectangle_blue"
@@ -130,7 +132,7 @@
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:paddingLeft="5dp"
-                android:textSize="15dp"
+                android:textSize="17dp"
                 android:singleLine="true" />
         </LinearLayout>
 
@@ -164,7 +166,7 @@
                 android:paddingLeft="5dp"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
-                android:textSize="15dp" />
+                android:textSize="17dp" />
 
 
             <RelativeLayout
@@ -192,7 +194,7 @@
                     android:text="@string/createaccountAr"
                     android:textColor="@color/darkblue"
                     android:textStyle="bold"
-                    android:textSize="10dp"
+                    android:textSize="12dp"
                     android:layout_margin="10dp"
                    android:id="@+id/createAccount"
                     android:layout_centerVertical="true"
@@ -201,7 +203,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textSize="10dp"
+                    android:textSize="12dp"
                     android:text="@string/forgetpasswordAr"
                     android:textColor="@color/darkblue"
                     android:layout_margin="10dp"

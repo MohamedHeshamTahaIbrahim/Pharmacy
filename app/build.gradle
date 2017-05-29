@@ -49,5 +49,5 @@ dependencies {
     compile('me.leolin:ShortcutBadger:1.1.13@aar') {
         exclude group: "com.android.support", module: 'support-v4'
     }
-
+    compile 'com.google.code.gson:gson:2.3.1'
 }

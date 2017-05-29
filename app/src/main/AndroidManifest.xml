@@ -14,8 +14,7 @@
     <uses-feature android:name="android.hardware.camera" />
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-feature android:name="android.hardware.camera.autofocus" />
-
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.STORAGE" />
     <!-- Maps API needs OpenGL ES 2.0. -->
@@ -24,7 +23,7 @@
         android:required="true" />
     <application
         android:allowBackup="true"
-        android:icon="@drawable/pharmacy_launch"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -65,6 +64,7 @@
             android:screenOrientation="portrait">
 
         </activity>
+        <activity android:name=".Rochta.DisplayImageCapture"></activity>
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.pharmacy.pharmacy.fileprovider"

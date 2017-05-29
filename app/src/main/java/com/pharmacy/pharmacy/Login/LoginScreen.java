@@ -40,6 +40,9 @@ public class LoginScreen extends Activity  {
         password=(EditText)findViewById(R.id.password);
       login=(Button)findViewById(R.id.login);
       createAccount=(TextView)findViewById(R.id.createAccount);
+        userName.setTypeface(AppController.getInstance().regular);
+        password.setTypeface(AppController.getInstance().regular);
+        login.setTypeface(AppController.getInstance().bold);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
