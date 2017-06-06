@@ -4,7 +4,7 @@
     android:id="@+id/activity_personal_information"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back4"
+    android:background="@drawable/bg"
     android:scrollbars="vertical"
    >
 
@@ -38,6 +38,14 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:verticalSpacing="5dp"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/capture_camera"
+        android:background="@drawable/camera_add"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
     <EditText
         android:id="@+id/notes"
         android:layout_width="match_parent"

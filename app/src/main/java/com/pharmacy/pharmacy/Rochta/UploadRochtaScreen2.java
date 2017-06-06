@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -53,21 +54,31 @@ public class UploadRochtaScreen2 extends Fragment implements View.OnClickListene
     private static final int REQUEST_IMAGE_CAPTURE = 2;
     private DAOdbUpload daOdb;
     View view;
+    ImageButton capture_camera;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
-        view= inflater.inflate(R.layout.activity_capture_rochta2, container, false);
+        view= inflater.inflate(R.layout.activity_upload_rochta2, container, false);
         cameraimage=(ImageView)view.findViewById(R.id.cameraimage);
         //addPhotoIcon=(ImageView)findViewById(R.id.addPhotoIcon);
         confirm=(Button)view.findViewById(R.id.confirm);
         activeGallery();
         // Construct the data source
         images = new ArrayList();
+
         // Create the adapter to convert the array to views
         imageAdapter = new ImageAdapter(getActivity(), images);
         // Attach the adapter to a ListView
         listView = (GridView) view.findViewById(R.id.main_list_view);
         listView.setAdapter(imageAdapter);
+        capture_camera=(ImageButton)view.findViewById(R.id.capture_camera) ;
+
+        capture_camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activeGallery();
+            }
+        });
      addItemClickListener(listView);
         initDB();
         //addPhotoIcon.setOnClickListener(this);
@@ -187,7 +198,7 @@ public class UploadRochtaScreen2 extends Fragment implements View.OnClickListene
             @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 MyImage image = (MyImage) listView.getItemAtPosition(position);
-                Intent intent = new Intent(getActivity(),DisplayImageCapture.class);
+                Intent intent = new Intent(getActivity(),DisplayImageUpload.class);
                 intent.putExtra("IMAGE", (new Gson()).toJson(image));
                 startActivity(intent);
             }

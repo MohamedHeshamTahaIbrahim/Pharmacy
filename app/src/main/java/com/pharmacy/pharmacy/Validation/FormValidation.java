@@ -1,6 +1,7 @@
 package com.pharmacy.pharmacy.Validation;
 
 
+import android.text.Editable;
 import android.widget.EditText;
 public class FormValidation {
 
@@ -18,7 +19,7 @@ public class FormValidation {
                 edt.setError("من فضلك قم بادخال البريد الإلكتروني");
             }
             else {*/
-                edt.setError("Please Enter Your Email");
+                edt.setError("من فضلك ادخل بريدك الإلكتروني");
             //}
            // edt.setBackgroundResource(R.drawable.underline_background_editview_red);
             return false;
@@ -27,7 +28,7 @@ public class FormValidation {
                 edt.setError("من فضلك قم بإدخال بريد إلكتروني صحيح");
             }
             else {*/
-                edt.setError("Please Enter Valid Email");
+                edt.setError("من فضلك ادخل بريد إلكتروني صحيح");
             //}
            // edt.setBackgroundResource(R.drawable.underline_background_editview_red);
 
@@ -44,7 +45,7 @@ public class FormValidation {
                 edt.setError("من فضلك قم بادخال البريد الإلكتروني");
             }
             else {*/
-                edt.setError("Please Enter Your Email");
+                edt.setError("من فضلك ادخل ايميلك");
            // }
             //edt.setBackgroundResource(R.drawable.underline_background_editview_red);
             return false;
@@ -108,21 +109,71 @@ public class FormValidation {
             return false;
         }
     }
-    public boolean Is_Valid_Password(String password){
-        if(password.length()>=6){
+    public boolean Is_Valid_Password(EditText password){
+        if(password.getText().toString().length()>=6||password.getText().toString()!=null||password.getText().toString().trim().length()>0){
 
             return true;
         }
         else {
+            if(password.getText().toString().trim().length()==0||password.getText().toString()==null)
+            {
+                password.setError("من فضلك ادخل كلمة المرور");
+            }
+            else if (password.getText().toString().length()<6) {
+                password.setError("كلمة المرور يجب ألا تقل عن 6");
+            }
             return false;
         }
     }
-   public boolean Is_Password_equal_Confirm_password(String password,String confirmPassword){
-       if(confirmPassword.equals(password)){
+   public boolean Is_Password_equal_Confirm_password(EditText password,EditText confirmPassword){
+       if(confirmPassword.getText().toString().equals(password.getText().toString())){
            return true;
        }
        else{
+           confirmPassword.setError("كلمات المرور غير متساوية");
            return false;
        }
    }
+    public boolean Is_Valid_UserName(EditText edt){
+       if(edt.getText().toString()==null){
+           edt.setError("من فضلك ادخل اسم المستخدم");
+           return false;
+       }
+       else if (edt.getText().toString().trim().length()==0){
+           edt.setError("من فضلك ادخل اسم المستخدم");
+           return false;
+       }
+       else {
+           return true;
+       }
+
+    }
+    public boolean Is_Valid_mobile(EditText edt){
+        if(edt.getText().toString()==null){
+            edt.setError("من فضلك ادخل الموبيل");
+            return false;
+        }
+        else if (edt.getText().toString().trim().length()==0){
+            edt.setError("من فضلك ادخل الموبيل");
+            return false;
+        }
+        else {
+            return true;
+        }
+
+    }
+    public boolean Is_Valid_address(EditText edt){
+        if(edt.getText().toString()==null){
+            edt.setError("من فضلك ادخل العنوان");
+            return false;
+        }
+        else if (edt.getText().toString().trim().length()==0){
+            edt.setError("من فضلك ادخل العنوان");
+            return false;
+        }
+        else {
+            return true;
+        }
+
+    }
 }

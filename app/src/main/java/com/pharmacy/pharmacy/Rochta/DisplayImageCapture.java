@@ -3,11 +3,18 @@ package com.pharmacy.pharmacy.Rochta;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.text.Layout;
 import android.view.Display;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.pharmacy.pharmacy.Customs.ImageResizer;
+import com.pharmacy.pharmacy.DAOdbCapture;
 import com.pharmacy.pharmacy.Model.MyImage;
 import com.pharmacy.pharmacy.R;
 
@@ -20,12 +27,14 @@ public class DisplayImageCapture extends FragmentActivity {
     private ImageView imageView;
     private TextView description;
     private String jstring;
+    ImageButton zoom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_image);
         imageView = (ImageView) findViewById(R.id.display_image_view);
+        zoom=(ImageButton) findViewById(R.id.zoom);
       //  description = (TextView) findViewById(R.id.text_view_description);
         Bundle extras = getIntent().getExtras();
 
@@ -41,6 +50,21 @@ public class DisplayImageCapture extends FragmentActivity {
         int height = size.y;
         imageView.setImageBitmap(ImageResizer
                 .decodeSampledBitmapFromFile(image.getPath(), width, height));
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DAOdbCapture db = new DAOdbCapture(DisplayImageCapture.this);
+                db.deleteImage(image);
+                db.close();
+            }
+        });
+        zoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Animation zoom= AnimationUtils.loadAnimation(DisplayImageCapture.this,R.anim.zoom);
+                imageView.startAnimation(zoom);
+            }
+        });
     }
 
     private MyImage getMyImage(String image) {
@@ -104,5 +128,8 @@ public class DisplayImageCapture extends FragmentActivity {
         }
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

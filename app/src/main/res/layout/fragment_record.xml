@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_record"
     android:orientation="vertical"
-    android:background="@drawable/back4"
+    android:background="@drawable/bg"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     <include
@@ -63,7 +63,7 @@ android:layout_below="@+id/include1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/recording_status_text"
-        android:text="@string/record_prompt"
+        android:text="@string/record_prompt_ar"
         android:textStyle="bold"
         android:textSize="17sp"
         android:textColor="#000000"

@@ -56,8 +56,17 @@
     <string name="resume_recording_button">Resume</string>
     <string name="default_file_name">Rochta Record</string>
     <string name="record_prompt">Tap the button to start recording</string>
+    <string name="record_prompt_ar">إضغط علي الميكرفون لتسجيل الروشتة</string>
     <string name="record_in_progress">Recording</string>
 
     <string name="send_to">Send to</string>
 
+    <!-- loading messages -->
+    <string name="loading_empty">Loading…</string>
+    <string name="loading_register">Registration Successfully</string>
+    <string name="info_registered_success">Registered successfully</string>
+    <!-- info messages -->
+    <string name="info_registered">Registered. ObjectId: %s</string>
+    <string name="info_logged_in">Logged in. ObjectId: %s</string>
+    <string name="loading_login">Logging in…</string>
 </resources>

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -51,15 +52,24 @@ public class CaptureRochtaScreen2 extends Fragment implements View.OnClickListen
     private static final int RESULT_LOAD_IMAGE = 1;
     private static final int REQUEST_IMAGE_CAPTURE = 2;
     private DAOdbCapture daOdb;
+   ImageButton capture_camera;
     View view;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
         view= inflater.inflate(R.layout.activity_capture_rochta2, container, false);
+        activeTakePhoto();
         cameraimage=(ImageView)view.findViewById(R.id.cameraimage);
         //addPhotoIcon=(ImageView)findViewById(R.id.addPhotoIcon);
         confirm=(Button)view.findViewById(R.id.confirm);
-        activeTakePhoto();
+        capture_camera=(ImageButton)view.findViewById(R.id.capture_camera) ;
+
+       capture_camera.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               activeTakePhoto();
+           }
+       });
         // Construct the data source
         images = new ArrayList();
         // Create the adapter to convert the array to views
@@ -67,7 +77,17 @@ public class CaptureRochtaScreen2 extends Fragment implements View.OnClickListen
         // Attach the adapter to a ListView
         listView = (GridView) view.findViewById(R.id.main_list_view);
         listView.setAdapter(imageAdapter);
-     addItemClickListener(listView);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                MyImage image = (MyImage) listView.getItemAtPosition(position);
+                Intent intent = new Intent(getActivity(),DisplayImageCapture.class);
+                intent.putExtra("IMAGE", (new Gson()).toJson(image));
+                startActivity(intent);
+            }
+        });
+    // addItemClickListener(listView);
+      //  imageAdapter.notifyDataSetChanged();
         initDB();
         //addPhotoIcon.setOnClickListener(this);
         confirm.setOnClickListener(this);
@@ -186,16 +206,8 @@ public class CaptureRochtaScreen2 extends Fragment implements View.OnClickListen
             images.add(mi);
         }
     }
-    private void addItemClickListener(final GridView listView) {
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+   /* private void addItemClickListener(final GridView listView) {
 
-                MyImage image = (MyImage) listView.getItemAtPosition(position);
-                Intent intent = new Intent(getActivity(),DisplayImageCapture.class);
-                intent.putExtra("IMAGE", (new Gson()).toJson(image));
-                startActivity(intent);
-            }
-        });
-    }
+    }*/
 
 }

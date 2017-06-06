@@ -44,6 +44,9 @@ public class AppController extends Application {
     public static Context context;
     public static String CurrentTag="home";
     String token;
+    public static final String APPLICATION_ID = "612EB06E-EA93-58E9-FFC8-4EAFC87DB500";
+    public static final String API_KEY = "5F3B4BF4-A2BB-7319-FFE6-BBE70AB0E200";
+    public static final String SERVER_URL = "https://api.backendless.com";
 
 
 

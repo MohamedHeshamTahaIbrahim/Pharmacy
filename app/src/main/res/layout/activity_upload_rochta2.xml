@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_personal_information"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:scrollbars="vertical"
+   >
+
+    <include
+        android:id="@+id/include1"
+        layout="@layout/view_main_header"/>
+   <!-- <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+
+      android:scaleType="fitXY"
+
+        android:id="@+id/cameraimage"
+        "/>-->
+
+    <GridView
+        android:id="@+id/main_list_view"
+        android:layout_above="@+id/notes"
+        android:layout_below="@+id/include1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="5dp"
+        android:cacheColorHint="@android:color/transparent"
+        android:stretchMode="columnWidth"
+        android:columnWidth="90dp"
+        android:horizontalSpacing="5dp"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="2"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:verticalSpacing="5dp"/>
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/capture_camera"
+        android:background="@drawable/picture"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    <EditText
+        android:id="@+id/notes"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+
+        android:ems="10"
+        android:gravity="center_vertical"
+        android:padding="25dp"
+
+        android:inputType="textMultiLine"
+        android:background="@drawable/card"
+        android:layout_above="@+id/confirm"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="إرسال"
+            android:textColor="@color/white"
+            android:background="@drawable/background_border"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textSize="20dp"
+            android:textAllCaps="true"
+             android:textStyle="bold"
+            android:id="@+id/confirm"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
+
+</RelativeLayout>
