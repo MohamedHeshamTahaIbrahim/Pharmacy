@@ -76,7 +76,10 @@ public class CaptureRochtaScreen2 extends Fragment implements View.OnClickListen
         imageAdapter = new ImageAdapter(getActivity(), images);
         // Attach the adapter to a ListView
         listView = (GridView) view.findViewById(R.id.main_list_view);
+        imageAdapter.notifyDataSetChanged();
         listView.setAdapter(imageAdapter);
+
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -91,6 +94,8 @@ public class CaptureRochtaScreen2 extends Fragment implements View.OnClickListen
         initDB();
         //addPhotoIcon.setOnClickListener(this);
         confirm.setOnClickListener(this);
+
+
         return view;
     }
     @Override
@@ -175,6 +180,7 @@ public class CaptureRochtaScreen2 extends Fragment implements View.OnClickListen
     @Override
     public void onResume() {
         super.onResume();
+        imageAdapter.notifyDataSetChanged();
         if(AppController.getInstance().CurrentTag.equalsIgnoreCase("home")) {
             MainActivity.navigationView.getMenu().getItem(0).setChecked(true);
             MainActivity.navigationView.getMenu().getItem(1).setChecked(false);
@@ -186,6 +192,7 @@ public class CaptureRochtaScreen2 extends Fragment implements View.OnClickListen
     @Override
     public void onPause() {
         super.onPause();
+        imageAdapter.notifyDataSetChanged();
         AppController.activityPaused();
     }
     private void activeTakePhoto() {

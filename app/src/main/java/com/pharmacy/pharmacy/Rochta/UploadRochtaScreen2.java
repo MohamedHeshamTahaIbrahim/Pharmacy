@@ -70,6 +70,7 @@ public class UploadRochtaScreen2 extends Fragment implements View.OnClickListene
         imageAdapter = new ImageAdapter(getActivity(), images);
         // Attach the adapter to a ListView
         listView = (GridView) view.findViewById(R.id.main_list_view);
+        imageAdapter.notifyDataSetChanged();
         listView.setAdapter(imageAdapter);
         capture_camera=(ImageButton)view.findViewById(R.id.capture_camera) ;
 

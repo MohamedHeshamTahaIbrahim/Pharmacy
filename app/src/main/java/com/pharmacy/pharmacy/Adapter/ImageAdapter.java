@@ -1,6 +1,8 @@
 package com.pharmacy.pharmacy.Adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -11,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
@@ -18,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.pharmacy.pharmacy.DAOdbCapture;
@@ -44,8 +48,9 @@ public class ImageAdapter extends ArrayAdapter<MyImage> {
     static final int ZOOM = 2;
     int mode = NONE;
     PhotoViewAttacher photoViewAttacher ;
-
-
+     boolean pressed=true;
+    Activity context;
+    ArrayList<MyImage> images=new ArrayList<MyImage>();
     /**
      * applying ViewHolder pattern to speed up ListView, smoother and faster
      * item loading by caching view in A ViewHolder object
@@ -53,12 +58,14 @@ public class ImageAdapter extends ArrayAdapter<MyImage> {
     private static class ViewHolder {
         ImageView imgIcon;
         TextView description;
-        ImageButton button,rotate;
+        ImageButton zoom,rotate;
 
     }
 
-    public ImageAdapter(Context context, ArrayList<MyImage> images) {
-        super(context, 0, images);
+    public ImageAdapter(Activity context, ArrayList<MyImage> images) {
+        super(context,R.layout.item_image);
+        this.context=context;
+        this.images=images;
     }
 
     @Override
@@ -76,7 +83,7 @@ public class ImageAdapter extends ArrayAdapter<MyImage> {
                     (TextView) convertView.findViewById(R.id.item_img_infor);*/
             viewHolder.imgIcon =
                     (ImageView) convertView.findViewById(R.id.item_img_icon);
-            viewHolder.button=(ImageButton) convertView.findViewById(R.id.button);
+            viewHolder.zoom=(ImageButton) convertView.findViewById(R.id.zoom);
             viewHolder.rotate=(ImageButton)convertView.findViewById(R.id.rotate);
             convertView.setTag(viewHolder);
         } else {
@@ -96,7 +103,7 @@ public class ImageAdapter extends ArrayAdapter<MyImage> {
 viewHolder.rotate.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-     int mCurrRotation = 0;
+    /* int mCurrRotation = 0;
         mCurrRotation %= 360;
         float fromRotation = mCurrRotation;
         float toRotation = mCurrRotation += 90;
@@ -107,17 +114,23 @@ viewHolder.rotate.setOnClickListener(new View.OnClickListener() {
         rotateAnim.setDuration(1000); // Use 0 ms to rotate instantly
         rotateAnim.setFillAfter(true); // Must be true or the animation will reset
 
-        viewHolder.imgIcon.startAnimation(rotateAnim);
+        viewHolder.imgIcon.startAnimation(rotateAnim);*/
+       DAOdbCapture db = new DAOdbCapture(context);
+        db.deleteImage(image);
+        db.close();
+        notifyDataSetChanged();
     }
 });
-     viewHolder.button.setOnClickListener(new View.OnClickListener() {
+     viewHolder.zoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
               /*  DAOdbCapture db = new DAOdbCapture(getContext());
                 db.deleteImage(image);
                 db.close();*/
-            final Animation zoom= AnimationUtils.loadAnimation(getContext(),R.anim.zoom);
-                viewHolder.imgIcon.startAnimation(zoom);
+         /*   final Animation zoom= AnimationUtils.loadAnimation(getContext(),R.anim.zoom);
+                viewHolder.imgIcon.startAnimation(zoom);*/
+         openCategoryPopup(context);
+
             }
         });
 
@@ -190,5 +203,109 @@ viewHolder.rotate.setOnClickListener(new View.OnClickListener() {
        });*/
         // Return the completed view to render on screen
         return convertView;
+    }
+    public void openCategoryPopup(Activity activity) {
+        int displayHeight = activity.getWindowManager().getDefaultDisplay().getHeight();
+        int displayWidth = activity.getWindowManager().getDefaultDisplay().getWidth();
+        int alertwidth = (int) (0.9 * (displayWidth));
+        int alertHeight = (int) (0.61 * (displayHeight));
+
+        int[] location = new int[2];
+//        categoryLayout.getLocationOnScreen(location);
+
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(activity);
+        LayoutInflater inflater = activity.getLayoutInflater();
+        final View dialogView;
+
+            dialogView = inflater.inflate(R.layout.zoom_dialog, null);
+
+
+        dialogBuilder.setView(dialogView);
+        final AlertDialog alert = dialogBuilder.create();
+        final ImageView zoomImage = (ImageView) dialogView.findViewById(R.id.zoomImage);
+        final ImageButton zoom=(ImageButton)dialogView.findViewById(R.id.zoom);
+        final  ImageButton rotate=(ImageButton)dialogView.findViewById(R.id.rotate);
+       zoomImage.setImageBitmap(ThumbnailUtils
+               .extractThumbnail(BitmapFactory.decodeFile(image.getPath()),
+                       THUMBSIZE, THUMBSIZE));
+
+       final Animation zoomin = AnimationUtils.loadAnimation(getContext(), R.anim.zoomin);
+        final Animation zoomout = AnimationUtils.loadAnimation(getContext(), R.anim.zoomout);
+        //  TextView closeFilter = (TextView) dialogView.findViewById(R.id.closeFilter);
+        //Set font for text in categoryfilter
+       /* zoomImage.setAnimation(zoomin);
+        zoomImage.setAnimation(zoomout);*/
+        int mCurrRotation = 0;
+        mCurrRotation %= 360;
+        float fromRotation = mCurrRotation;
+        float toRotation = mCurrRotation += 90;
+
+        final RotateAnimation rotateAnim = new RotateAnimation(
+                fromRotation, toRotation, zoomImage.getWidth()/2, zoomImage.getHeight()/2);
+
+        rotateAnim.setDuration(1000); // Use 0 ms to rotate instantly
+        rotateAnim.setFillAfter(true); // Must be true or the animation will reset
+
+      /*  zoomImage.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              if(!pressed) {
+                  v.startAnimation(zoomin);
+
+                  pressed = !pressed;
+              } else {
+                  v.startAnimation(zoomout);
+
+                  pressed = !pressed;
+
+              }
+
+
+          }
+      });*/
+        zoom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!pressed) {
+                    zoomImage.startAnimation(zoomin);
+
+                    pressed = !pressed;
+                } else {
+                    zoomImage.startAnimation(zoomout);
+
+                    pressed = !pressed;
+
+                }
+            }
+        });
+  rotate.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+          int mCurrRotation = 0;
+          mCurrRotation %= 360;
+          float fromRotation = mCurrRotation;
+          float toRotation = mCurrRotation += 90;
+
+          final RotateAnimation rotateAnim = new RotateAnimation(
+                  fromRotation, toRotation, zoomImage.getWidth()/2, zoomImage.getHeight()/2);
+
+          rotateAnim.setDuration(1000); // Use 0 ms to rotate instantly
+          rotateAnim.setFillAfter(true); // Must be true or the animation will reset
+
+          zoomImage.startAnimation(rotateAnim);
+      }
+  });
+
+
+
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(alert.getWindow().getAttributes());
+        alert.getWindow().setAttributes(lp);
+        alert.show();
+//        alert.getWindow().setLayout(alertwidth, alertHeight);
+
+
     }
 }
