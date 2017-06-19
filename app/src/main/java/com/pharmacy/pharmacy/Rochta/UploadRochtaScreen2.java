@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,16 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.backendless.Backendless;
+import com.backendless.DeviceRegistration;
+import com.backendless.Messaging;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessException;
+import com.backendless.exceptions.BackendlessFault;
+import com.backendless.files.BackendlessFile;
+import com.backendless.messaging.DeliveryOptions;
+import com.backendless.messaging.PublishOptions;
+import com.backendless.messaging.PublishPolicyEnum;
 import com.google.gson.Gson;
 import com.pharmacy.pharmacy.Adapter.ImageAdapter;
 import com.pharmacy.pharmacy.AppController;
@@ -26,10 +37,16 @@ import com.pharmacy.pharmacy.DAOdbCapture;
 import com.pharmacy.pharmacy.DAOdbUpload;
 import com.pharmacy.pharmacy.MainActivity;
 import com.pharmacy.pharmacy.Model.MyImage;
+import com.pharmacy.pharmacy.Model.Rochta;
+import com.pharmacy.pharmacy.MyPushService;
 import com.pharmacy.pharmacy.R;
 
 import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -53,13 +70,43 @@ public class UploadRochtaScreen2 extends Fragment implements View.OnClickListene
     private static final int RESULT_LOAD_IMAGE = 1;
     private static final int REQUEST_IMAGE_CAPTURE = 2;
     private DAOdbUpload daOdb;
+    Uri selectedImage;
     View view;
     ImageButton capture_camera;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
         view= inflater.inflate(R.layout.activity_upload_rochta2, container, false);
+//        DeviceRegistration devReg = Backendless.Messaging.getDeviceRegistration();
+        Backendless.Messaging.registerDevice("386360262521", new AsyncCallback<Void>() {
+            @Override
+            public void handleResponse(Void response) {
+                Log.i("MyApp","Device has registered");
+
+
+
+
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+                Log.e("MyApp","Server reported an error -"+fault.getMessage());
+            }
+        });
+        final Rochta rochta=new Rochta();
+        PublishOptions publishOptions=new PublishOptions();
+        HashMap<String,String>headers=new HashMap<String,String>();
+        headers.put("alert-text","You have Received Rochta from Customer");
+        headers.put("android-ticker-text","You have Received Rochta from Customer");
+        headers.put("android-content-title","You have Received Rochta from Customer");
+        headers.put("android-content-text",rochta.getImage_location());
+        publishOptions.setHeaders(headers);
+        DeliveryOptions deliveryOptions=new DeliveryOptions();
+        deliveryOptions.setPublishPolicy(PublishPolicyEnum.BOTH);
+        Backendless.Messaging.publish("You have Received Rochta from Customer",publishOptions,deliveryOptions);
         cameraimage=(ImageView)view.findViewById(R.id.cameraimage);
+        Backendless.setUrl( AppController.getInstance().SERVER_URL );
+        Backendless.initApp(getActivity(), AppController.getInstance().APPLICATION_ID, AppController.getInstance().API_KEY );
         //addPhotoIcon=(ImageView)findViewById(R.id.addPhotoIcon);
         confirm=(Button)view.findViewById(R.id.confirm);
         activeGallery();
@@ -91,7 +138,7 @@ public class UploadRochtaScreen2 extends Fragment implements View.OnClickListene
 
         if (requestCode == RESULT_LOAD_IMAGE &&
                 resultCode == RESULT_OK && null != data) {
-            Uri selectedImage = data.getData();
+            selectedImage = data.getData();
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
             Cursor cursor = getActivity().getContentResolver().query(selectedImage, filePathColumn, null, null, null);
             cursor.moveToFirst();
@@ -161,8 +208,14 @@ public class UploadRochtaScreen2 extends Fragment implements View.OnClickListene
                 //  intent.putExtra("BitmapImage",useBitmap);
                 intent.putExtra("kk",photo);
                 startActivity(intent);*/
+                sendImageToUser(selectedImage);
                 Toast.makeText(getActivity(), "جاري توصيل الروشتة للصيديليات",
                         Toast.LENGTH_LONG).show();
+
+
+
+              /*  Intent intent =new Intent(getActivity(), MyPushService.class);
+                getActivity().startService(intent);*/
                 break;
 
         }
@@ -205,5 +258,42 @@ public class UploadRochtaScreen2 extends Fragment implements View.OnClickListene
             }
         });
     }
+    private void sendImageToUser(Uri imageUri){
+        try {
+            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
+            String timestamp=new SimpleDateFormat("yyyMMdd_HHmmss").format(new Date());
+            String imageFileName="JPEG_"+timestamp+"_.jpg";
+            String imageDirectory="h";
+            final Rochta rochta=new Rochta();
+            rochta.setRochta_type("image");
+            rochta.setImage_location(imageDirectory+"/"+imageFileName);
 
+            Backendless.Files.Android.upload(bitmap, Bitmap.CompressFormat.JPEG, 100, imageFileName, imageDirectory, new AsyncCallback<BackendlessFile>() {
+                @Override
+                public void handleResponse(BackendlessFile response) {
+                    Log.i("sendPhoto","Photo saved to Backendless!");
+                    Backendless.Persistence.save(rochta, new AsyncCallback<Rochta>() {
+                        @Override
+                        public void handleResponse(Rochta response) {
+
+                        }
+
+                        @Override
+                        public void handleFault(BackendlessFault fault) {
+
+                        }
+                    });
+                }
+
+                @Override
+                public void handleFault(BackendlessFault fault) {
+                    Log.i("sendPhoto","failed image");
+
+                }
+            });
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }

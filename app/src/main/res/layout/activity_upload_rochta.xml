@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:text="إرسال"
         android:textAllCaps="true"
-        android:background="@color/background"
+        android:background="@color/primary"
         android:textColor="@color/white"
         android:textStyle="bold"
         android:id="@+id/confirm"

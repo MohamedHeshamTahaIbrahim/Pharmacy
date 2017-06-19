@@ -26,6 +26,7 @@ import com.pharmacy.pharmacy.Rochta.RecordFragment;
 import com.pharmacy.pharmacy.Rochta.RecordRochtaScreen;
 import com.pharmacy.pharmacy.Rochta.UploadRochtaScreen;
 import com.pharmacy.pharmacy.Rochta.UploadRochtaScreen2;
+import com.pharmacy.pharmacy.Rochta.UploadRochtaScreen3;
 import com.pharmacy.pharmacy.Rochta.WriteRochtaScreen;
 import com.pharmacy.pharmacy.SquareImageButton;
 
