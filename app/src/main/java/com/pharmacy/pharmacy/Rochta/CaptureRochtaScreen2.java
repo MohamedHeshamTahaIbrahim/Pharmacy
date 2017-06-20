@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +20,24 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.backendless.Backendless;
+import com.backendless.async.callback.AsyncCallback;
+import com.backendless.exceptions.BackendlessFault;
+import com.backendless.files.BackendlessFile;
 import com.google.gson.Gson;
 import com.pharmacy.pharmacy.Adapter.ImageAdapter;
 import com.pharmacy.pharmacy.AppController;
 import com.pharmacy.pharmacy.DAOdbCapture;
 import com.pharmacy.pharmacy.MainActivity;
 import com.pharmacy.pharmacy.Model.MyImage;
+import com.pharmacy.pharmacy.Model.Rochta;
 import com.pharmacy.pharmacy.R;
 
 import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -54,11 +63,42 @@ public class CaptureRochtaScreen2 extends Fragment implements View.OnClickListen
     private DAOdbCapture daOdb;
    ImageButton capture_camera;
     View view;
+    Uri selectedImage;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
         view= inflater.inflate(R.layout.activity_capture_rochta2, container, false);
+
         activeTakePhoto();
+        Backendless.Messaging.registerDevice("386360262521", new AsyncCallback<Void>() {
+            @Override
+            public void handleResponse(Void response) {
+                Log.i("MyApp","Device has registered");
+
+
+
+
+            }
+
+            @Override
+            public void handleFault(BackendlessFault fault) {
+                Log.e("MyApp","Server reported an error -"+fault.getMessage());
+            }
+        });
+     /*   final Rochta rochta=new Rochta();
+        PublishOptions publishOptions=new PublishOptions();
+        HashMap<String,String>headers=new HashMap<String,String>();
+        headers.put("alert-text","You have Received Rochta from Customer");
+        headers.put("android-ticker-text","You have Received Rochta from Customer");
+        headers.put("android-content-title","You have Received Rochta from Customer");
+        headers.put("android-content-text",rochta.getImage_location());
+        publishOptions.setHeaders(headers);
+        DeliveryOptions deliveryOptions=new DeliveryOptions();
+        deliveryOptions.setPublishPolicy(PublishPolicyEnum.BOTH);
+        Backendless.Messaging.publish("You have Received Rochta from Customer",publishOptions,deliveryOptions);*/
+        cameraimage=(ImageView)view.findViewById(R.id.cameraimage);
+        Backendless.setUrl( AppController.getInstance().SERVER_URL );
+        Backendless.initApp(getActivity(), AppController.getInstance().APPLICATION_ID, AppController.getInstance().API_KEY );
         cameraimage=(ImageView)view.findViewById(R.id.cameraimage);
         //addPhotoIcon=(ImageView)findViewById(R.id.addPhotoIcon);
         confirm=(Button)view.findViewById(R.id.confirm);
@@ -103,6 +143,7 @@ public class CaptureRochtaScreen2 extends Fragment implements View.OnClickListen
 
 
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+
             String[] projection = {MediaStore.Images.Media.DATA};
             Cursor cursor = getActivity().managedQuery(mCapturedImageURI, projection, null, null, null);
             int column_index_data = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
@@ -171,6 +212,7 @@ public class CaptureRochtaScreen2 extends Fragment implements View.OnClickListen
                 //  intent.putExtra("BitmapImage",useBitmap);
                 intent.putExtra("kk",photo);
                 startActivity(intent);*/
+                sendImageToUser(mCapturedImageURI);
                 Toast.makeText(getActivity(), "جاري توصيل الروشتة للصيديليات",
                         Toast.LENGTH_LONG).show();
                 break;
@@ -216,5 +258,42 @@ public class CaptureRochtaScreen2 extends Fragment implements View.OnClickListen
    /* private void addItemClickListener(final GridView listView) {
 
     }*/
+   private void sendImageToUser(Uri imageUri){
+       try {
+           Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
+           String timestamp=new SimpleDateFormat("yyyMMdd_HHmmss").format(new Date());
+           String imageFileName="JPEG_"+timestamp+"_.jpg";
+           String imageDirectory="c";
+           final Rochta rochta=new Rochta();
+           rochta.setRochta_type("image");
+           rochta.setImage_location(imageDirectory+"/"+imageFileName);
 
+           Backendless.Files.Android.upload(bitmap, Bitmap.CompressFormat.JPEG, 100, imageFileName, imageDirectory, new AsyncCallback<BackendlessFile>() {
+               @Override
+               public void handleResponse(BackendlessFile response) {
+                   Log.i("sendPhoto","Photo saved to Backendless!");
+                   Backendless.Persistence.save(rochta, new AsyncCallback<Rochta>() {
+                       @Override
+                       public void handleResponse(Rochta response) {
+
+                       }
+
+                       @Override
+                       public void handleFault(BackendlessFault fault) {
+
+                       }
+                   });
+               }
+
+               @Override
+               public void handleFault(BackendlessFault fault) {
+                   Log.i("sendPhoto","failed image");
+
+               }
+           });
+       }
+       catch (IOException e){
+           e.printStackTrace();
+       }
+   }
 }

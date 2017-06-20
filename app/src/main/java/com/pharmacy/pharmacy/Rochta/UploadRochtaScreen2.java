@@ -93,7 +93,7 @@ public class UploadRochtaScreen2 extends Fragment implements View.OnClickListene
                 Log.e("MyApp","Server reported an error -"+fault.getMessage());
             }
         });
-        final Rochta rochta=new Rochta();
+     /*   final Rochta rochta=new Rochta();
         PublishOptions publishOptions=new PublishOptions();
         HashMap<String,String>headers=new HashMap<String,String>();
         headers.put("alert-text","You have Received Rochta from Customer");
@@ -103,7 +103,7 @@ public class UploadRochtaScreen2 extends Fragment implements View.OnClickListene
         publishOptions.setHeaders(headers);
         DeliveryOptions deliveryOptions=new DeliveryOptions();
         deliveryOptions.setPublishPolicy(PublishPolicyEnum.BOTH);
-        Backendless.Messaging.publish("You have Received Rochta from Customer",publishOptions,deliveryOptions);
+        Backendless.Messaging.publish("You have Received Rochta from Customer",publishOptions,deliveryOptions);*/
         cameraimage=(ImageView)view.findViewById(R.id.cameraimage);
         Backendless.setUrl( AppController.getInstance().SERVER_URL );
         Backendless.initApp(getActivity(), AppController.getInstance().APPLICATION_ID, AppController.getInstance().API_KEY );
